@@ -1,0 +1,31 @@
+{
+  "name": "techpar-atividade-05",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon",
+    "staging": "NODE_ENV=staging nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joicenunes/techpar-atividade-05.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joicenunes/techpar-atividade-05/issues"
+  },
+  "homepage": "https://github.com/joicenunes/techpar-atividade-05#readme",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "knex": "^0.12.9",
+    "pg": "^6.1.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}

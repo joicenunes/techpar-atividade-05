@@ -1,0 +1,11 @@
+<form name="pessoaForm" ng-submit="salvarPessoa(pessoa);">
+    <p>
+    <label for "pnid">Nome:</label>
+    <input type="text" name="nome" id="pnid" ng-model="pessoa.nomepessoa" placeholder="Nome" ng-required="true" />
+    </p><p>
+    <label for "ptid">Telefone:</label>
+    <input type="text" name="telefone" id="ptid" ng-model="pessoa.telefonepessoa" placeholder="Telefone" />
+    </p><p>
+    <input type="submit" value="Adicionar pessoa" ng-disabled="pessoaForm.$invalid" />
+    </p>
+</form>

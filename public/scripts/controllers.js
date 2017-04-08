@@ -1,6 +1,6 @@
-const mainApp = angular.module("techpar", ['ngRoute']);
+const mainApp = angular.module("techpar");
 
-mainApp.config(['$routerProvider'],($routerProvider) =>{
+mainApp.config(($routerProvider) =>{
     $routerProvider
          .when('/listar',{
              templateUrl: '../pages/listar.html',
@@ -13,23 +13,23 @@ mainApp.config(['$routerProvider'],($routerProvider) =>{
          .otherwise({redirectTo: '/listar'});
 });
 
-mainApp.controller("listCtrl", function($scope, pessoasAPI) {
+mainApp.controller("listCtrl", function($scope, pessoasService) {
 	$scope.titulo = "Formulário";
-	$scope.pessoas = [];
+	$scope.newPessoa = {};
     
     $scope.carregarContatos = function () {
-        pessoasAPI.listPessoas().then(function (ret) {
+        pessoasService.listPessoas().then(function (ret) {
             if(ret.status != 200)
                 throw ret;
-            $scope.pessoas = ret.data;
+            $scope.newPessoa = ret.data;
         });
     };
     $scope.carregarContatos();
 });
 
-mainApp.controller("saveCtrl", function($scope, pessoasAPI) {
+mainApp.controller("saveCtrl", function($scope, pessoasService) {
     $scope.salvarPessoa = function(pessoa) {
-        pessoasAPI.savePessoas(pessoa).then((data) => {
+        pessoasService.savePessoas(pessoa).then((data) => {
             alert("Salvo com sucesso!");
             listCtrl.carregarContatos();
             delete $scope.pessoa;

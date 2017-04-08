@@ -33,7 +33,7 @@ app.post("/salvar", (req,res) => {
 	console.log(pessoa);
 });
 
-knex.migrate.latest();
-
-app.listen(3000);
-console.log("Rodando na porta 3000...");
+knex.migrate.latest().then( () => {
+  app.listen(3000);
+  console.log("app online na porta 3000");
+});

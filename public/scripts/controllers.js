@@ -13,7 +13,7 @@ mainApp.config(($routeProvider) =>{
          .otherwise({redirectTo: '/listar'});
 });
 
-mainApp.controller("listCtrl", function($scope, pessoasService) {
+mainApp.controller("listCtrl", ['pessoasService', function($scope,pessoasService) {
 	$scope.titulo = "Formulário";
 	$scope.newPessoa = {};
     
@@ -25,9 +25,9 @@ mainApp.controller("listCtrl", function($scope, pessoasService) {
         });
     };
     $scope.carregarContatos();
-});
+}]);
 
-mainApp.controller("saveCtrl", function($scope, pessoasService, listCtrl) {
+mainApp.controller("saveCtrl", ['pessoasService', function($scope, pessoasService, listCtrl) {
     $scope.salvarPessoa = function(pessoa) {
         pessoasService.savePessoas(pessoa).then((data) => {
             alert("Salvo com sucesso!");
@@ -35,4 +35,4 @@ mainApp.controller("saveCtrl", function($scope, pessoasService, listCtrl) {
             delete $scope.pessoa;
         })
     };
-});
+}]);

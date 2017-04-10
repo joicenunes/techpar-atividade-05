@@ -1,7 +1,7 @@
 const mainApp = angular.module("techpar");
 
-mainApp.config(($routerProvider) =>{
-    $routerProvider
+mainApp.config(($routeProvider) =>{
+    $routeProvider
          .when('/listar',{
              templateUrl: '../pages/listar.html',
              controller: 'listCtrl'
@@ -27,7 +27,7 @@ mainApp.controller("listCtrl", function($scope, pessoasService) {
     $scope.carregarContatos();
 });
 
-mainApp.controller("saveCtrl", function($scope, pessoasService) {
+mainApp.controller("saveCtrl", function($scope, pessoasService, listCtrl) {
     $scope.salvarPessoa = function(pessoa) {
         pessoasService.savePessoas(pessoa).then((data) => {
             alert("Salvo com sucesso!");

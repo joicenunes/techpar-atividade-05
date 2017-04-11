@@ -13,15 +13,8 @@ app.use(bodyParser.json());
 
 app.use(express.static("public"));
 
-var listaDePessoas = [];
-
 app.get('/listar', function(req, res) {
   knex("pessoa").select().then((ret) => res.send(ret));
-});
-
-app.post('/listar', function(req, res) {
-  listaDePessoas.push(req.body);
-  res.send(true);
 });
 
 app.post("/salvar", (req,res) => {

@@ -12,27 +12,27 @@ mainApp.config(($routeProvider) =>{
         })
          .otherwise({redirectTo: '/listar'});
 });
-
-mainApp.controller("listCtrl", ['pessoasService', function($scope,pessoasService) {
-	$scope.titulo = "Formulário";
-	$scope.newPessoa = {};
-    
+// usando a sintaxe com array, os nomes de todos os objetos injetados devem ser listados
+mainApp.controller("listCtrl", ['$scope', 'pessoasService', function($scope, pessoasService) {
+	    
     $scope.carregarContatos = function () {
         pessoasService.listPessoas().then(function (ret) {
             if(ret.status != 200)
                 throw ret;
-            $scope.newPessoa = ret.data;
+            $scope.pessoas = ret.data;
         });
     };
     $scope.carregarContatos();
 }]);
 
-mainApp.controller("saveCtrl", ['pessoasService', function($scope, pessoasService, listCtrl) {
+// pode ainda usar sem a sintaxe de array
+mainApp.controller("saveCtrl", function($scope, pessoasService, $location) {
     $scope.salvarPessoa = function(pessoa) {
         pessoasService.savePessoas(pessoa).then((data) => {
             alert("Salvo com sucesso!");
-            listCtrl.carregarContatos();
-            delete $scope.pessoa;
+            // listCtrl.carregarContatos();
+            // delete $scope.pessoa;
+           $location.path("/listar")
         })
     };
-}]);
+});
